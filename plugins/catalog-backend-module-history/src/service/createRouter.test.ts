@@ -29,6 +29,7 @@ import request from 'supertest';
 import { createMockEntityProvider } from '../__fixtures__/createMockEntityProvider';
 import { initializeDatabaseAfterCatalog } from '../database/migrations';
 import { createRouter } from './createRouter';
+import { parseCursor } from './endpoints/GetEvents.utils';
 
 jest.setTimeout(60_000);
 
@@ -89,7 +90,7 @@ describe('createRouter', () => {
         status: 200,
         body: { items: [], pageInfo: { cursor: expect.any(String) } },
       });
-      expect(decodeCursor(response.body.pageInfo.cursor)).toEqual({
+      expect(parseCursor(response.body.pageInfo.cursor)).toEqual({
         version: 1,
         afterEventId: undefined,
         entityRef: undefined,
@@ -137,7 +138,7 @@ describe('createRouter', () => {
         status: 202,
         body: { items: [], pageInfo: { cursor: expect.any(String) } },
       });
-      expect(decodeCursor(response.body.pageInfo.cursor)).toEqual({
+      expect(parseCursor(response.body.pageInfo.cursor)).toEqual({
         version: 1,
         afterEventId: undefined,
         entityRef: undefined,
@@ -168,7 +169,7 @@ describe('createRouter', () => {
           pageInfo: { cursor: expect.any(String) },
         },
       });
-      expect(decodeCursor(response.body.pageInfo.cursor)).toEqual({
+      expect(parseCursor(response.body.pageInfo.cursor)).toEqual({
         version: 1,
         afterEventId: '1',
         entityRef: undefined,
@@ -207,7 +208,7 @@ describe('createRouter', () => {
         status: 202,
         body: { items: [], pageInfo: { cursor: expect.any(String) } },
       });
-      expect(decodeCursor(response.body.pageInfo.cursor)).toEqual({
+      expect(parseCursor(response.body.pageInfo.cursor)).toEqual({
         version: 1,
         afterEventId: '1',
         entityRef: undefined,
@@ -238,7 +239,7 @@ describe('createRouter', () => {
           pageInfo: { cursor: expect.any(String) },
         },
       });
-      expect(decodeCursor(response.body.pageInfo.cursor)).toEqual({
+      expect(parseCursor(response.body.pageInfo.cursor)).toEqual({
         version: 1,
         afterEventId: '2',
         entityRef: undefined,
@@ -268,7 +269,7 @@ describe('createRouter', () => {
           pageInfo: { cursor: expect.any(String) },
         },
       });
-      expect(decodeCursor(response.body.pageInfo.cursor)).toEqual({
+      expect(parseCursor(response.body.pageInfo.cursor)).toEqual({
         version: 1,
         afterEventId: '2',
         entityRef: undefined,
@@ -298,7 +299,7 @@ describe('createRouter', () => {
           pageInfo: { cursor: expect.any(String) },
         },
       });
-      expect(decodeCursor(response.body.pageInfo.cursor)).toEqual({
+      expect(parseCursor(response.body.pageInfo.cursor)).toEqual({
         version: 1,
         afterEventId: '1',
         entityRef: undefined,
@@ -338,7 +339,7 @@ describe('createRouter', () => {
         status: 202,
         body: { items: [], pageInfo: { cursor: expect.any(String) } },
       });
-      expect(decodeCursor(response.body.pageInfo.cursor)).toEqual({
+      expect(parseCursor(response.body.pageInfo.cursor)).toEqual({
         version: 1,
         afterEventId: '2',
         entityRef: 'component:default/foo',
@@ -368,7 +369,7 @@ describe('createRouter', () => {
           pageInfo: { cursor: expect.any(String) },
         },
       });
-      expect(decodeCursor(response.body.pageInfo.cursor)).toEqual({
+      expect(parseCursor(response.body.pageInfo.cursor)).toEqual({
         version: 1,
         afterEventId: '3',
         entityRef: 'component:default/foo',
@@ -382,8 +383,3 @@ describe('createRouter', () => {
     },
   );
 });
-
-function decodeCursor(cursor: string) {
-  const decoded = Buffer.from(cursor, 'base64url').toString('utf-8');
-  return JSON.parse(decoded);
-}
