@@ -1,5 +1,11 @@
 # @backstage/plugin-search-react
 
+## 1.9.0-next.2
+
+### Patch Changes
+
+- 2c76614: Fix memoization of `filterValue` in `SearchFilter.Autocomplete` to prevent unintended resets
+
 ## 1.9.0-next.1
 
 ### Patch Changes

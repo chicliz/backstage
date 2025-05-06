@@ -1,5 +1,13 @@
 # @backstage/plugin-notifications-backend-module-slack
 
+## 0.1.1-next.3
+
+### Patch Changes
+
+- e099d0a: Notifications which mention user entity refs are now replaced with Slack compatible mentions.
+
+  Example: `Welcome <@user:default/billy>!` -> `Welcome <@U123456890>!`
+
 ## 0.1.1-next.2
 
 ### Patch Changes

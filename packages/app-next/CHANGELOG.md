@@ -1,5 +1,24 @@
 # example-app-next
 
+## 0.0.23-next.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-search-react@1.9.0-next.2
+  - @backstage/plugin-catalog@1.29.1-next.3
+  - @backstage/plugin-search@1.4.26-next.3
+  - @backstage/plugin-techdocs@1.12.6-next.3
+  - @backstage/core-compat-api@0.4.2-next.2
+  - @backstage/plugin-api-docs@0.12.7-next.3
+  - @backstage/plugin-catalog-graph@0.4.19-next.2
+  - @backstage/plugin-catalog-import@0.13.0-next.2
+  - @backstage/plugin-org@0.6.39-next.2
+  - @backstage/plugin-scaffolder@1.31.0-next.2
+  - @backstage/plugin-scaffolder-react@1.16.0-next.2
+  - @backstage/plugin-user-settings@0.8.22-next.2
+  - @backstage/plugin-techdocs-module-addons-contrib@1.1.24-next.2
+
 ## 0.0.23-next.2
 
 ### Patch Changes

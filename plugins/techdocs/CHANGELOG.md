@@ -1,5 +1,13 @@
 # @backstage/plugin-techdocs
 
+## 1.12.6-next.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-search-react@1.9.0-next.2
+  - @backstage/core-compat-api@0.4.2-next.2
+
 ## 1.12.6-next.2
 
 ### Patch Changes
